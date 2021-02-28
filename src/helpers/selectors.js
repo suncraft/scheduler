@@ -19,3 +19,14 @@ export function getAppointmentsForDay(state, day) {
   return appointmentsArray;
   
 }; 
+
+export function getInterview(state, interview) {
+  if (!interview) {
+    return null;
+  }
+
+  const sameID = interview.interviewer;
+  const theInterviewer = state.interviewers[sameID];
+  const interviewInfo = { ...interview, interviewer: theInterviewer };
+  return interviewInfo;
+}
