@@ -69,7 +69,7 @@ function deleteAppointment(event) {
           onSave={save}
           onCancel={back}
           name={props.interview ? props.interview.student : null}
-          interviewer={props.interview.interviewer.id}
+          interviewer={props.interview ? props.interview.interviewer : []} //would I do the same thing here?
           mode="edit"
         />
       )}
@@ -78,9 +78,10 @@ function deleteAppointment(event) {
         <Show
           students={props.interview ? props.interview.student : null}
           interviewer={[]} //WHY IS THIS WORKING WITH [] ????
-          onEdit={props.onEdit}
+          // props.interview ? props.interview.interviewer : null
+          // onEdit={props.onEdit}
           // onDelete={props.onDelete}
-          // onEdit={() => transition(EDIT)}
+          onEdit={(event) => transition(EDIT)}
           onDelete={(event) => transition(CONFIRM)}
         />
       )}
