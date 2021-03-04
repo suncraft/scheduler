@@ -8,11 +8,9 @@ import Status from "./Status";
 import Confirm from "./Confirm";
 import Error from "./Error";
 
-
 import useVisualMode from "hooks/useVisualMode"
 
 import "components/Appointment/styles.scss";
-
 
 export default function Appointment(props) {
   // const [stateOf, setOf] = useState(""); //template incase I need state
@@ -42,14 +40,12 @@ function save(name, interviewer) {
   .catch(error => transition(ERROR_SAVE, true));
 }
 
-
 function deleteAppointment(event) {
   transition(DELETE, true);
   props.cancelInterview(props.id)
   .then(() => transition(EMPTY))
   .catch(error => transition(ERROR_DELETE, true));
 }
-
 
   return (
     <Fragment>
@@ -64,7 +60,6 @@ function deleteAppointment(event) {
         <Confirm 
           message="Are you sure you would like to delete?" 
           onCancel={back} 
-          // onConfirm={e => transition(DELETE)}
           onConfirm={deleteAppointment}
         />
       )}
@@ -79,14 +74,11 @@ function deleteAppointment(event) {
         />
       )}
 
-
       {mode === SHOW && (
         <Show
           students={props.interview ? props.interview.student : null}
           interviewer={[]} //WHY IS THIS WORKING WITH [] ????
           // props.interview ? props.interview.interviewer : null
-          // onEdit={props.onEdit}
-          // onDelete={props.onDelete}
           onEdit={(event) => transition(EDIT)}
           onDelete={(event) => transition(CONFIRM)}
         />
