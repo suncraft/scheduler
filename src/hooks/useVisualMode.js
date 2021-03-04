@@ -1,30 +1,29 @@
 import { useState } from 'react';
 
 export default function useVisualMode(initial) {
-  const [mode, setMode] = useState([initial]);
+  const [mode, setMode] = useState([initial]); //[history, setHistory] needs another useState???
 
   //default params
   const transition = function (newMode, replace = false) {
     if (replace) {
-      const replacedMode = [...mode]
-      replacedMode.pop();
-      replacedMode.push(newMode);
-      setMode(replacedMode);
+      const replacingMode = [...mode]
+      replacingMode.pop();
+      replacingMode.push(newMode);
+      setMode(replacingMode);
     } else {
       setMode([...mode, newMode])
     }
   }
 
-  const back = function () {
-    const poppedArr = [...mode];
-    console.log("poppedArr", poppedArr);
 
-    if (poppedArr.length > 1){
-      poppedArr.pop();
-      setMode(poppedArr);
+  const back = function () {
+    const arr = [...mode];
+    if (arr.length > 1){
+      arr.pop();
+      setMode(arr);
     }
 
-    setMode(poppedArr);
+    setMode(arr);
     return;
   }
 

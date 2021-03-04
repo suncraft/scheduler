@@ -6,7 +6,7 @@ import DayListItem from "components/DayListItem";
 //   <DayList days={days} day={"Monday"} setDay={action("setDay")} />
 
 export default function dayList(props) {
-  console.log("Daylist props: ", props);
+  // console.log("Daylist props: ", props);
 
   if (props.length === 0 || props.days === undefined) {
     return [];
