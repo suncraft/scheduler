@@ -29,7 +29,7 @@ export default function Application(props) {
     return (
       <Appointment
         key={appointment.id}
-        id={appointment.id} //propbably don't need key and id
+        id={appointment.id} //propbably don't need key and id, but it doesn't work without id since it's prop for other stuff
         time={appointment.time}
         interview={interview}
         interviewers={GETinterviewers}

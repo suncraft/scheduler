@@ -29,7 +29,6 @@ function bookInterview(id, interview) {
   const putURL = `/api/appointments/${id}`;
   return axios.put(putURL, appointment)
   .then(() => setState({...state, appointments }))
-  // days: updatedDays
 }
 
 function cancelInterview(id) {
@@ -43,7 +42,7 @@ function cancelInterview(id) {
     [id]: appointment
   };
 
-  return axios.delete('/api/appointments/' + id, {...appointment})
+  return axios.delete(`/api/appointments/${id}`, {...appointment})
     .then(res => {
       setState({ ...state, appointment, appointments });
     })
