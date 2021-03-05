@@ -3,7 +3,6 @@ import React from "react";
 
 
 export default function Status(props) {
-  // const [stateOf, setOf] = useState(""); //template incase I need state
 
   return (
       <main className="appointment__card appointment__card--error">
@@ -19,4 +18,4 @@ export default function Status(props) {
         />
       </main>
     )
-}
+};

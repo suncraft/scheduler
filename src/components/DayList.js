@@ -24,18 +24,3 @@ export default function dayList(props) {
     <ul>{ whichDay }</ul>
   )
 };
-
-//IF I WANT TO USE A TERNARY OPERATOR, maybe this for blank?
-// { props
-//   ? props.days.map(day => {
-//     return (
-//       <DayListItem 
-//       key={day.id} 
-//       name={day.name} 
-//       spots={day.spots} 
-//       selected={day.name === props.day}
-//       setDay={props.setDay}  />
-//     )
-//   }
-//   )
-//   : "Loading"}

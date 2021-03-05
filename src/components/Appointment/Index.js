@@ -13,7 +13,6 @@ import useVisualMode from "hooks/useVisualMode"
 import "components/Appointment/styles.scss";
 
 export default function Appointment(props) {
-  // const [stateOf, setOf] = useState(""); //template incase I need state
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
@@ -39,20 +38,21 @@ function save(name, interviewer) {
   // .then(console.log())
   .then(() => transition(SHOW))
   .catch(error => transition(ERROR_SAVE, true));
-}
+};
 
 function deleteAppointment(event) {
   transition(DELETE, true);
   props.cancelInterview(props.id)
   .then(() => transition(EMPTY))
   .catch(error => transition(ERROR_DELETE, true));
-}
+};
 
   return (
     <Fragment>
     <article className="appointment">
       <Header time={props.time}/>
 
+      {/* MODES DISPLAYING */}
       {mode === SAVING && <Status message="Saving..." />} 
       {mode === DELETE && <Status message="Deleting..." />}
       {mode === ERROR_SAVE && <Error message="Unable to save." onClose={back}/>}
@@ -70,7 +70,7 @@ function deleteAppointment(event) {
           onSave={save}
           onCancel={back}
           name={props.interview.student}
-          interviewer={props.interview.interviewer} //would I do the same thing here? With || null ???
+          interviewer={props.interview.interviewer} //would I do the same thing here? With || null or : null
         />
       )}
 
@@ -95,4 +95,4 @@ function deleteAppointment(event) {
     </article>
   </Fragment>
   )
-}
+};

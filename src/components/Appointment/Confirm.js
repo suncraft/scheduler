@@ -3,8 +3,6 @@ import Button from "components/Button"
 
 
 export default function Confirm(props) {
-  // const [stateOf, setOf] = useState(""); //template incase I need state
-
 
   return (
       <main className="appointment__card appointment__card--confirm">
@@ -15,4 +13,4 @@ export default function Confirm(props) {
         </section>
       </main>
     )
-}
+};

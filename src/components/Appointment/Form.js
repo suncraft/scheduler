@@ -12,26 +12,21 @@ export default function Form(props) {
     if (name === "") {
       setError("Student name cannot be blank");
       return;
-    }
+    };
   
     setError("");
     props.onSave(name, interviewer);
-  }
+  };
 
   const reset = function () {
     setName("");
     setInterviewer(null);
-  }
+  };
 
   const cancel = function() {
     props.onCancel();
     reset();
-  }
-
-  // const save = function() {
-  //   props.onSave(name, interviewer);
-  //   reset();
-  // }
+  };
 
   return (
     <main className="appointment__card appointment__card--create">
@@ -39,7 +34,7 @@ export default function Form(props) {
         <form autoComplete="off" onSubmit={event => event.preventDefault()}>
           <input
             className="appointment__create-input text--semi-bold"
-            name="name" // ...does this serve a purpose? I am too sleepy to remember. But
+            name="name" // ...does this serve a purpose? I am too sleepy to remember. Seems to break something without.
             data-testid="student-name-input" // TESTING
 
             value={name}
@@ -59,4 +54,4 @@ export default function Form(props) {
       </section>
     </main>
   )
-}
+};

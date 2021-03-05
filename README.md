@@ -1,5 +1,7 @@
 # Interview Scheduler
 
+
+
 ## Setup
 
 Install dependencies with `npm install`.
@@ -10,14 +12,4 @@ Install dependencies with `npm install`.
 npm start
 ```
 
-## Running Jest Test Framework
-
-```sh
-npm test
-```
-
-## Running Storybook Visual Testbed
-
-```sh
-npm run storybook
-```
+## Images

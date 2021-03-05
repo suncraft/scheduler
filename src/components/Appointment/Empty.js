@@ -2,8 +2,6 @@ import React from "react";
 
 
 export default function Empty(props) {
-  // const [stateOf, setOf] = useState(""); //template incase I need state
-
 
   return (
 <main className="appointment__add">
@@ -15,4 +13,4 @@ export default function Empty(props) {
   />
 </main>
     )
-}
+};

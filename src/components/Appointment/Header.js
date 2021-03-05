@@ -2,8 +2,6 @@ import React from "react";
 
 
 export default function Header(props) {
-  // const [stateOf, setOf] = useState(""); //template incase I need state
-
 
   return (
   <header className="appointment__time">
@@ -11,4 +9,4 @@ export default function Header(props) {
     <hr className="appointment__separator" />
   </header>
     )
-}
+};

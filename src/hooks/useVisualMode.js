@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 export default function useVisualMode(initial) {
-  const [mode, setMode] = useState([initial]);
+  const [mode, setMode] = useState([initial]); //needs initial [] for the mode.slice at end
 
   //default params
   const transition = function (newMode, replace = false) {

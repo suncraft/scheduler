@@ -16,15 +16,12 @@ export default function Application(props) {
     cancelInterview
   } = useApplicationData();
 
-  // console.log(state.interviewers);
 
   const GETinterviewers = getInterviewersForDay(state, state.day);
   const dailyAppointments = getAppointmentsForDay(state, state.day);
 
   const renderAppointments = dailyAppointments.map(appointment => {
     const interview = getInterview(state, appointment.interview);
-
-    // console.log("From renderAppointments", appointment);
 
     return (
       <Appointment
@@ -68,4 +65,4 @@ export default function Application(props) {
       </section>
     </main>
   );
-}
+};

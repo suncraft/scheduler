@@ -1,11 +1,9 @@
 import React from "react";
 import "components/InterviewerList.scss";
-// import PropTypes from 'prop-types';
 
 import InterviewerListItem from "components/InterviewerListItem";
 
 function InterviewerList(props) {
-  // console.log("List: ", props);
 
   const interviewers = props.interviewers.map(interviewer => {
     return (
@@ -19,6 +17,7 @@ function InterviewerList(props) {
       />
     );
   });
+  // from: https://kentcdodds.com/blog/prop-drilling
 
   return (
     <section className="interviewers">
@@ -26,46 +25,10 @@ function InterviewerList(props) {
       <ul className="interviewers__list"> { interviewers } </ul>
     </section>
   )
-}
+};
 //TEST CODE
 // InterviewerList.propTypes = {
 //     interviewers: PropTypes.array.isRequired
 //   };
 
 export default InterviewerList;
-
-// from: https://kentcdodds.com/blog/prop-drilling
-// function Toggle() {
-//   const [on, setOn] = React.useState(false)
-//   const toggle = () => setOn(o => !o)
-//   return (
-//     <div>
-//       <div>The button is {on ? 'on' : 'off'}</div>
-//       <button onClick={toggle}>Toggle</button>
-//     </div>
-//   )
-// }
-
-
-// function Toggle() {
-//    const [on, setOn] = React.useState(false)
-//    const toggle = () => setOn(o => !o)
-//    return <Switch on={on} onToggle={toggle} />
-// }
-
-// function Switch({on, onToggle}) {
-//   return (
-//      <div>
-//         <SwitchMessage on={on} />
-//         <SwitchButton onToggle={onToggle} />
-//       </div>
-//     )
-//   }
-  
-//   function SwitchMessage({on}) {
-//     return <div>The button is {on ? 'on' : 'off'}</div>
-//   }
-  
-//   function SwitchButton({onToggle}) {
-//     return <button onClick={onToggle}>Toggle</button>
-//   }

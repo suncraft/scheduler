@@ -1,9 +1,6 @@
 import React from "react";
-// import Button from "components/Button"
-
 
 export default function Status(props) {
-  // const [stateOf, setOf] = useState(""); //template incase I need state
 
   return (
       <main className="appointment__card appointment__card--status">
@@ -15,4 +12,4 @@ export default function Status(props) {
         <h1 className="text--semi-bold">{props.message}</h1>
       </main>
     )
-}
+};
