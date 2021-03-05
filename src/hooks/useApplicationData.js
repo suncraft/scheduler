@@ -26,7 +26,7 @@ function bookInterview(id, interview) {
     ...state,
     appointments
   });
-  const putURL = `http://localhost:8001/api/appointments/${id}`;
+  const putURL = `/api/appointments/${id}`;
   return axios.put(putURL, appointment)
   .then(() => setState({...state, appointments }))
   // days: updatedDays
@@ -43,7 +43,7 @@ function cancelInterview(id) {
     [id]: appointment
   };
 
-  return axios.delete('http://localhost:8001/api/appointments/' + id, {...appointment})
+  return axios.delete('/api/appointments/' + id, {...appointment})
     .then(res => {
       setState({ ...state, appointment, appointments });
     })
@@ -52,9 +52,9 @@ function cancelInterview(id) {
 const setDay = day => setState({ ...state, day });
 
 useEffect(() => {
-  const daysUrl = `http://localhost:8001/api/days`;
-  const appointmentsUrl = `http://localhost:8001/api/appointments`;
-  const interviewersUrl = `http://localhost:8001/api/interviewers`;
+  const daysUrl = `/api/days`;
+  const appointmentsUrl = `/api/appointments`;
+  const interviewersUrl = `/api/interviewers`;
   Promise.all([
     axios.get(daysUrl),
     axios.get(appointmentsUrl),
