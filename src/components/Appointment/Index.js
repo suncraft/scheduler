@@ -68,8 +68,8 @@ function deleteAppointment(event) {
           interviewers={props.interviewers}
           onSave={save}
           onCancel={back}
-          name={props.interview ? props.interview.student : null}
-          interviewer={props.interview ? props.interview.interviewer : []} //would I do the same thing here?
+          name={props.interview.student}
+          interviewer={props.interview.interviewer.id} //would I do the same thing here?
           mode="edit"
         />
       )}
@@ -77,8 +77,9 @@ function deleteAppointment(event) {
       {mode === SHOW && (
         <Show
           students={props.interview ? props.interview.student : null}
-          interviewer={[]} //WHY IS THIS WORKING WITH [] ????
-          // props.interview ? props.interview.interviewer : null
+          interviewer={props.interview ? props.interview.interviewer : null} 
+          // interviewer={[]} 
+          // how do I make this dynamic
           onEdit={(event) => transition(EDIT)}
           onDelete={(event) => transition(CONFIRM)}
         />

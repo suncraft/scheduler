@@ -15,7 +15,7 @@ export function getAppointmentsForDay(state, day) {
 export function getInterviewersForDay(state, day) {
   // if (state.days.length === 0) return []; //??? Why did the tests not like this??
   const dayInterviewer = state.days.filter(dayIn => dayIn.name === day)
-  if (dayInterviewer.length === 0) return [];
+  if (dayInterviewer.length === 0) return []; // but likes this????
 
   const interviewersArr = [];
   for (const id of dayInterviewer[0].interviewers) {
@@ -30,8 +30,8 @@ export function getInterview(state, interview) {
     return null;
   }
 
-  const sameID = interview.interviewer;
-  const theInterviewer = state.interviewers[sameID];
+  const ID = interview.interviewer;
+  const theInterviewer = state.interviewers[ID];
   const interviewInfo = { ...interview, interviewer: theInterviewer };
   return interviewInfo;
 }

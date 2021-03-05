@@ -11,8 +11,28 @@ const [state, setState] = useState({
   interviewers: {}
 });
 
-function bookInterview(id, interview) {
+// function bookInterview(id, interview) {
 
+//   const appointment = {
+//     ...state.appointments[id],
+//     interview: { ...interview }
+//   };
+//   const appointments = {
+//     ...state.appointments,
+//     [id]: appointment
+//   };
+//   console.log("From bookInterview using save props: ",id, interview);
+//   setState({
+//     ...state,
+//     appointments
+//   });
+//   const putURL = `http://localhost:8001/api/appointments/${id}`;
+//   return axios.put(putURL, appointment)
+//   .then(() => setState({...state, appointments }))
+//   // days: updatedDays
+// }
+
+function bookInterview(id, interview) {
   const appointment = {
     ...state.appointments[id],
     interview: { ...interview }
@@ -21,16 +41,22 @@ function bookInterview(id, interview) {
     ...state.appointments,
     [id]: appointment
   };
-  console.log("From bookInterview using save props: ",id, interview);
-  setState({
-    ...state,
-    appointments
-  });
-  const putURL = `http://localhost:8001/api/appointments/${id}`;
-  return axios.put(putURL, appointment)
-  .then(() => setState({...state, appointments }))
-  // days: updatedDays
-}
+  const updatedDays = state.days.map((day) => {
+    if (day.appointments.includes(id)) {
+      const appointmentz = state.appointments[id]
+      if (appointmentz.interview === null && appointmentz.id === id) {
+        return {...day, spots: day.spots - 1}
+      } else {
+        return {...day}
+      }
+    } else {
+      return {...day}
+    }
+  }) 
+  const url = `http://localhost:8001/api/appointments/${id}`;
+  return axios.put(url, appointment)
+    .then(() => setState({...state, appointments, days: updatedDays}))
+};
 
 function cancelInterview(id) {
   const appointment = {
@@ -64,14 +90,14 @@ useEffect(() => {
     .then((all) => {
 
       setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
-      console.log(state);
+      // console.log(state);
 
 
     })
     .catch(err => {
       console.log(err)
     });
-}, [state]);
+}, []);
 
 return {state, setDay, bookInterview, cancelInterview};
 
