@@ -7,6 +7,16 @@ export default function Form(props) {
   const [name, setName] = useState(props.name || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
 
+  // function validate() {
+  //   if (name === "") {
+  //     setError("Student name cannot be blank");
+  //     return;
+  //   }
+  
+  //   setError("");
+  //   props.onSave(name, interviewer);
+  // }
+
   const reset = function () {
     setName("");
     setInterviewer(null);
@@ -28,7 +38,9 @@ export default function Form(props) {
         <form autoComplete="off" onSubmit={event => event.preventDefault()}>
           <input
             className="appointment__create-input text--semi-bold"
-            name="name"
+            name="name" // ...does this serve a purpose? I am too sleepy to remember. 
+            data-testid="student-name-input" // TESTING
+
             value={name}
             type="text"
             placeholder="Enter Student Name"
