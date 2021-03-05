@@ -89,7 +89,7 @@ function deleteAppointment(event) {
           interviewers={props.interviewers}
           onSave={save}
           onCancel={back}
-          mode="book"
+          // mode="book" //??
         />
       )}
       
