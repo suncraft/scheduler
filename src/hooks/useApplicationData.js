@@ -5,34 +5,14 @@ import axios from 'axios';
 export default function useApplicationData(initial) {
 
 const [state, setState] = useState({
-  day: "Monday",
+  day: "",
   days: [],
   appointments: {},
   interviewers: {}
 });
 
-// function bookInterview(id, interview) {
-
-//   const appointment = {
-//     ...state.appointments[id],
-//     interview: { ...interview }
-//   };
-//   const appointments = {
-//     ...state.appointments,
-//     [id]: appointment
-//   };
-//   console.log("From bookInterview using save props: ",id, interview);
-//   setState({
-//     ...state,
-//     appointments
-//   });
-//   const putURL = `http://localhost:8001/api/appointments/${id}`;
-//   return axios.put(putURL, appointment)
-//   .then(() => setState({...state, appointments }))
-//   // days: updatedDays
-// }
-
 function bookInterview(id, interview) {
+
   const appointment = {
     ...state.appointments[id],
     interview: { ...interview }
@@ -41,22 +21,16 @@ function bookInterview(id, interview) {
     ...state.appointments,
     [id]: appointment
   };
-  const updatedDays = state.days.map((day) => {
-    if (day.appointments.includes(id)) {
-      const appointmentz = state.appointments[id]
-      if (appointmentz.interview === null && appointmentz.id === id) {
-        return {...day, spots: day.spots - 1}
-      } else {
-        return {...day}
-      }
-    } else {
-      return {...day}
-    }
-  }) 
-  const url = `http://localhost:8001/api/appointments/${id}`;
-  return axios.put(url, appointment)
-    .then(() => setState({...state, appointments, days: updatedDays}))
-};
+  console.log("From bookInterview using save props: ",id, interview);
+  setState({
+    ...state,
+    appointments
+  });
+  const putURL = `http://localhost:8001/api/appointments/${id}`;
+  return axios.put(putURL, appointment)
+  .then(() => setState({...state, appointments }))
+  // days: updatedDays
+}
 
 function cancelInterview(id) {
   const appointment = {
@@ -72,7 +46,6 @@ function cancelInterview(id) {
   return axios.delete('http://localhost:8001/api/appointments/' + id, {...appointment})
     .then(res => {
       setState({ ...state, appointment, appointments });
-      // dispatch({ type: SET_INTERVIEW, value: {appointments} });
     })
 }
 

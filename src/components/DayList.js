@@ -1,12 +1,8 @@
 import React from "react";
-// import classNames from "classnames";
 import DayListItem from "components/DayListItem";
 
-// .add("Monday", () => (
-//   <DayList days={days} day={"Monday"} setDay={action("setDay")} />
 
 export default function dayList(props) {
-  // console.log("Daylist props: ", props);
 
   if (props.length === 0 || props.days === undefined) {
     return [];

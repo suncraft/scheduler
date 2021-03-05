@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 export default function useVisualMode(initial) {
-  const [mode, setMode] = useState([initial]); //[history, setHistory] needs another useState???
+  const [mode, setMode] = useState([initial]);
 
   //default params
   const transition = function (newMode, replace = false) {

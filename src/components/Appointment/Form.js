@@ -7,9 +7,6 @@ export default function Form(props) {
   const [name, setName] = useState(props.name || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
 
-  // const [name, setName] = useState(""); //template incase I need state
-  // const [interviewer, setInterviewer] = useState(1); //template incase I need state
-
   const reset = function () {
     setName("");
     setInterviewer(null);
@@ -49,18 +46,3 @@ export default function Form(props) {
     </main>
   )
 }
-
-// <Form 
-//         name=""
-//         interviewers={interviewers}
-//         interviewer={1}
-//         onSave={action("onSave")}
-//         onCancel={action("onCancel")}
-//       />
-//     ))
-//     .add("Create", () => (
-//       <Form 
-//         interviewers={interviewers}
-//         onSave={action("onSave")}
-//         onCancel={action("onCancel")}
-//       />

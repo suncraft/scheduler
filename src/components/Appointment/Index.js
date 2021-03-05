@@ -36,6 +36,7 @@ function save(name, interviewer) {
   };
   transition(SAVING)
   props.bookInterview(props.id, interview)
+  // .then(console.log())
   .then(() => transition(SHOW))
   .catch(error => transition(ERROR_SAVE, true));
 }
@@ -54,11 +55,11 @@ function deleteAppointment(event) {
 
       {mode === SAVING && <Status message="Saving..." />} 
       {mode === DELETE && <Status message="Deleting..." />}
-      {mode === ERROR_SAVE && <Error message="Could not save appointment" onClose={back}/>}
-      {mode === ERROR_DELETE && <Error message="Could not delete appointment" onClose={back}/>}
+      {mode === ERROR_SAVE && <Error message="Unable to save." onClose={back}/>}
+      {mode === ERROR_DELETE && <Error message="Unable to delete." onClose={back}/>}
       {mode === CONFIRM && (
         <Confirm 
-          message="Are you sure you would like to delete?" 
+          message="Are you sure you would like to delete this?" 
           onCancel={back} 
           onConfirm={deleteAppointment}
         />
@@ -69,17 +70,14 @@ function deleteAppointment(event) {
           onSave={save}
           onCancel={back}
           name={props.interview.student}
-          interviewer={props.interview.interviewer.id} //would I do the same thing here?
-          mode="edit"
+          interviewer={props.interview.interviewer} //would I do the same thing here? With || null ???
         />
       )}
 
       {mode === SHOW && (
         <Show
           students={props.interview ? props.interview.student : null}
-          interviewer={props.interview ? props.interview.interviewer : null} 
-          // interviewer={[]} 
-          // how do I make this dynamic
+          interviewer={props.interview ? props.interview.interviewer : null}
           onEdit={(event) => transition(EDIT)}
           onDelete={(event) => transition(CONFIRM)}
         />
@@ -99,15 +97,3 @@ function deleteAppointment(event) {
   </Fragment>
   )
 }
-
-//old code
-/* {props.interview ?
-        <Show
-          students={props.interview.student}
-          interviewer={props.interview.interviewer} 
-          onEdit={props.onEdit}
-          onDelete={props.onDelete}
-        /> :
-      <Empty
-        onAdd={props.onAdd} 
-      />} */

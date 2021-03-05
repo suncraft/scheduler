@@ -1,7 +1,6 @@
 import React from "react";
 import "components/InterviewerList.scss";
 // import PropTypes from 'prop-types';
-// import classNames from "classnames";
 
 import InterviewerListItem from "components/InterviewerListItem";
 
@@ -16,8 +15,7 @@ function InterviewerList(props) {
         name={interviewer.name}
         avatar={interviewer.avatar}
         selected={interviewer.id === props.interviewer}
-        // setInterviewer={props.setInterviewer}
-        setInterviewer={(event) => props.setInterviewer(interviewer.id)}//?????
+        setInterviewer={(event) => props.setInterviewer(interviewer.id)} //IT WORKS!!
       />
     );
   });
@@ -29,18 +27,12 @@ function InterviewerList(props) {
     </section>
   )
 }
-
+//TEST CODE
 // InterviewerList.propTypes = {
 //     interviewers: PropTypes.array.isRequired
 //   };
-export default InterviewerList;
-  
-//template: ####################
-// <section className="interviewers">
-//  <h4 className="interviewers__header text--light">Interviewer</h4>
-//  <ul className="interviewers__list"></ul>
-// </section>
 
+export default InterviewerList;
 
 // from: https://kentcdodds.com/blog/prop-drilling
 // function Toggle() {

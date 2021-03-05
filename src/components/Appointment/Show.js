@@ -2,10 +2,7 @@ import React from "react";
 
 
 export default function Show(props) {
-  // const [stateOf, setOf] = useState(""); //template incase I need state
-  console.log(props.interviewer.name);
-
-
+  
   return (
 <main className="appointment__card appointment__card--show">
   <section className="appointment__card-left">
