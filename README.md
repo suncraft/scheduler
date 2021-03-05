@@ -1,6 +1,6 @@
 # Interview Scheduler
 
-This is a simple but visually appealing way to set up 
+This is a visually appealing way to set up appointments. 
 
 ## Setup
 
