@@ -24,7 +24,7 @@ export default function Application(props) {
   const renderAppointments = dailyAppointments.map(appointment => {
     const interview = getInterview(state, appointment.interview);
 
-    console.log("From renderAppointments", appointment);
+    // console.log("From renderAppointments", appointment);
 
     return (
       <Appointment
