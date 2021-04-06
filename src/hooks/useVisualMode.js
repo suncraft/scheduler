@@ -3,6 +3,10 @@ import { useState } from 'react';
 export default function useVisualMode(initial) {
   const [mode, setMode] = useState([initial]); //needs initial [] for the mode.slice at end
 
+  //making this a [] instead of using: const [history, setHistory] = useState([initial]); <-- combines the two
+  //since mode is an array now, it has it's own indexed history
+  //and we RETURN the last item in that array as the most recent mode
+
   //default params
   const transition = function (newMode, replace = false) {
     if (replace) {

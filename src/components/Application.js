@@ -8,7 +8,8 @@ import Appointment from "components/Appointment/Index";
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors"
 
 
-export default function Application(props) {
+
+export default function Application() {
   const {
     state,
     setDay,
@@ -61,6 +62,9 @@ export default function Application(props) {
       <section className="schedule">
 
         { renderAppointments }
+        <Appointment key="last" time="5pm" /> 
+        {/* I wonder where I was supposed to put this tbh */}
+
 
       </section>
     </main>
