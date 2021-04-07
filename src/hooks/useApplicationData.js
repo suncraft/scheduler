@@ -25,9 +25,22 @@ function bookInterview(id, interview) {
     ...state,
     appointments
   });
+
+  const bookingPlusSpot = state.days.map((day) => {
+    if (day.appointments.includes(id)) {
+      const stateOfSpots = state.appointments[id]
+      if (stateOfSpots.interview === null && stateOfSpots.id === id) {
+        return {...day, spots: day.spots - 1}
+      } else {
+        return {...day}
+      }
+    } else {
+      return {...day}
+    }
+  });
   const putURL = `/api/appointments/${id}`;
   return axios.put(putURL, appointment)
-  .then(() => setState({...state, appointments }))
+  .then(() => setState({...state, appointments, days: bookingPlusSpot }))
 }
 
 function cancelInterview(id) {
@@ -41,9 +54,17 @@ function cancelInterview(id) {
     [id]: appointment
   };
 
+  const bookingMinusSpot = state.days.map((day) => {
+    if (day.appointments.includes(id)) {
+      return {...day, spots: day.spots + 1}
+    } else {
+      return day
+    }
+  })
+
   return axios.delete(`/api/appointments/${id}`, {...appointment})
     .then(res => {
-      setState({ ...state, appointment, appointments });
+      setState({ ...state, appointment, appointments, days: bookingMinusSpot });
     })
 }
 
